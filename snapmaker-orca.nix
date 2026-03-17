@@ -64,7 +64,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "Snapmaker";
     repo = "OrcaSlicer";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-bc3Fl4W5E7JrdYsjGPoxloioMSEHgY/Chpj1zsm5a1c=";
+    hash = "sha256-qK4etfhgha0etcKT9f0og9SI9mTs9G/qaG/jl+44qo8=";
   };
 
   nativeBuildInputs = [
