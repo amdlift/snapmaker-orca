@@ -27,6 +27,7 @@
   wxwidgets_3_1,
   glib,
   libX11,
+  gtest,
 
   libmspack,
   gst_all_1,
@@ -108,6 +109,9 @@ stdenv.mkDerivation (finalAttrs: {
   ]
   ++ lib.optionals withSystemd [ systemd ]
   ++ finalAttrs.checkInputs;
+
+  doCheck = true;
+  checkInputs = [ gtest ];
 
   patches = [
     # Fix for webkitgtk linking
