@@ -40,7 +40,9 @@
   gtk3,
   glew,
   git,
-  texinfo
+  texinfo,
+  systemd,
+  withSystemd ? stdenv.hostPlatform.isLinux
 }:
 
 let
@@ -103,11 +105,13 @@ stdenv.mkDerivation rec {
     libsecret
     gst_all_1.gstreamer
     libX11
-  ];
+  ]
+  ++ lib.optionals withSystemd [ systemd ]
+  ++ finalAttrs.checkInputs;
 
   patches = [
     # Fix for webkitgtk linking
-    # ./patches/0001-not-for-upstream-CMakeLists-Link-against-webkit2gtk-.patch
+    ./patches/0001-not-for-upstream-CMakeLists-Link-against-webkit2gtk-.patch
     # Link opencv_core and opencv_imgproc instead of opencv_world
     ./patches/dont-link-opencv-world-orca.patch
     # The changeset from https://github.com/SoftFever/OrcaSlicer/pull/7650, can be removed when that PR gets merged
