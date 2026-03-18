@@ -66,7 +66,7 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Snapmaker";
     repo = "OrcaSlicer";
-    tag = "v${version}";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-qK4etfhgha0etcKT9f0og9SI9mTs9G/qaG/jl+44qo8=";
   };
 
