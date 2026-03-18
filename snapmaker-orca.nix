@@ -59,7 +59,7 @@ let
         ];
       });
 in
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "snapmaker-orcaslicer";
   version = "2.2.4";
 
@@ -163,4 +163,4 @@ stdenv.mkDerivation rec {
     );
   };
 
-}
+})
