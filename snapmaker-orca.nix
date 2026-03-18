@@ -105,6 +105,11 @@ stdenv.mkDerivation rec {
     libX11
   ];
 
+  prePatch = ''
+    sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/PerimeterGenerator.cpp
+    sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
+  '';
+
   cmakeFlags = [
     (lib.cmakeBool "Boost_USE_STATIC_LIBS" false)
     (lib.cmakeFeature "CMAKE_POLICY_VERSION_MINIMUM" "3.13")
