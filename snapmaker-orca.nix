@@ -105,6 +105,15 @@ stdenv.mkDerivation rec {
     libX11
   ];
 
+  patches = [
+    # Fix for webkitgtk linking
+    # ./patches/0001-not-for-upstream-CMakeLists-Link-against-webkit2gtk-.patch
+    # Link opencv_core and opencv_imgproc instead of opencv_world
+    ./patches/dont-link-opencv-world-orca.patch
+    # The changeset from https://github.com/SoftFever/OrcaSlicer/pull/7650, can be removed when that PR gets merged
+    # Allows disabling the update nag screen
+  ];
+
   prePatch = ''
     sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/PerimeterGenerator.cpp
     sed -i 's|"libnoise/noise.h"|"noise/noise.h"|' src/libslic3r/Feature/FuzzySkin/FuzzySkin.cpp
