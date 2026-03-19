@@ -32,7 +32,7 @@
   libmspack,
   gst_all_1,
   libsecret,
-  webkitgtk_4_0,
+  webkitgtk_4_1,
   mesa,
   openssl,
   curl,
@@ -106,6 +106,7 @@ stdenv.mkDerivation (finalAttrs: {
     libsecret
     gst_all_1.gstreamer
     libX11
+    webkitgtk_4_1
   ]
   ++ lib.optionals withSystemd [ systemd ]
   ++ finalAttrs.checkInputs;
